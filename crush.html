@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Be Mine? ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .proposal {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      position: relative;
+      width: 400px;
+      height: 300px;
+    }
+
+    h1 {
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #yesBtn {
+      background: #e91e63;
+      color: white;
+    }
+
+    #noBtn {
+      background: #ccc;
+      color: #333;
+      position: absolute;
+    }
+
+    #please {
+      color: #ff1744;
+      font-size: 20px;
+      margin-top: 15px;
+      display: none;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Romantic Screen */
+    .romantic {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-image: url("https://media.istockphoto.com/id/826460638/photo/silhouettes-of-a-young-couple-kissing-with-city-panorama-in-the-background.jpg?s=612x612&w=0&k=20&c=rVU0Dyi2C96NUuRKw0CCMKCQNGKgqYh5gwAD5g32vGs=");
+      background-size: cover;
+      background-position: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .romantic::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .romantic h1 {
+      position: relative;
+      color: white;
+      font-size: 48px;
+      text-shadow: 0 0 20px rgba(255,255,255,0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="proposal" id="proposalBox">
+    <h1>Shilpa ❤️</h1>
+    <p>Will you be mine Valentine? 💍🥺</p>
+
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 🙈</button>
+
+    <div id="please">Please Please Please 🥺💗</div>
+  </div>
+
+  <div class="romantic" id="romanticScreen">
+    <h1>I know you will say yes... ❤️</h1>
+    <h1>I Love You More❤️</h1>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const pleaseText = document.getElementById("please");
+    const proposalBox = document.getElementById("proposalBox");
+    const romanticScreen = document.getElementById("romanticScreen");
+
+    // Initial No button position
+    noBtn.style.top = "200px";
+    noBtn.style.left = "230px";
+
+    noBtn.addEventListener("mouseenter", () => {
+      const boxRect = proposalBox.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const maxX = boxRect.width - btnRect.width;
+      const maxY = boxRect.height - btnRect.height;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+
+      pleaseText.style.display = "block";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      proposalBox.style.display = "none";
+      romanticScreen.style.display = "flex";
+    });
+  </script>
+
+</body>
+</html>
